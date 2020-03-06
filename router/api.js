@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { UserModel, ExerciseModel } = require('../models')
 
-app.post('/exercise/new-user', async (req, res) => {
+router.post('/exercise/new-user', async (req, res) => {
   const { username } = req.body
   const user = new UserModel({
     username
@@ -11,12 +11,12 @@ app.post('/exercise/new-user', async (req, res) => {
   res.json(user)
 })
 
-app.get('/exercise/users', async (req, res) => {
+router.get('/exercise/users', async (req, res) => {
   const users = await UserModel.find()
   res.json(users)
 })
 
-app.post('/exercise/add', async (req, res) => {
+router.post('/exercise/add', async (req, res) => {
   const { userId, description, duration, date } = req.body
   const user = await UserModel.findById(userId)
   const exercise = new ExerciseModel({
@@ -29,7 +29,7 @@ app.post('/exercise/add', async (req, res) => {
   res.json({...user, ...exercise})
 })
 
-app.get('/exercise/log', async (req, res) => {
+router.get('/exercise/log', async (req, res) => {
   const { userId, from, to, limit } = req.query
   const user = await UserModel.findById(userId)
   const selector = { userId: user._id }
