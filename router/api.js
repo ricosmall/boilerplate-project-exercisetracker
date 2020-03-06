@@ -29,7 +29,7 @@ app.post('/exercise/add', async (req, res) => {
   res.json({...user, ...exercise})
 })
 
-app.get('/exercise/log', (req, res) => {
+app.get('/exercise/log', async (req, res) => {
   const { userId, from, to, limit } = req.query
   const user = await UserModel.findById(userId)
   const selector = { userId: user._id }
