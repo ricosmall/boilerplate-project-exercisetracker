@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const api = require('./router/api')
 
-mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' )
+mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track', {useMongoClient: true})
 
 app.use(cors())
 
