@@ -4,6 +4,6 @@ const userSchema = new mongoose.Schema({
   username: String
 })
 
-const userModel = mongoose.model('User', Schema)
+const userModel = mongoose.model('User', userSchema)
 
 module.exports = userModel
